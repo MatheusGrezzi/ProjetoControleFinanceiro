@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-container {
+  background: white;
+  padding: 2.5rem 3rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 320px;
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 1.5rem;
+  color: #357abd;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: border-color 0.2s ease;
+}
+
+input:focus {
+  border-color: #357abd;
+  outline: none;
+}
+
+/* Botão padrão de submit (login) */
+button[type="submit"] {
+  background-color: #357abd;
+  color: white;
+  border: none;
+  padding: 0.75rem;
+  font-weight: 600;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #285a8f;
+}
+
+/* Formulário de recuperação: maior espaçamento entre input e botões */
+#reset-password-form {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Espaço maior para separar input dos botões */
+}
+
+/* Container dos botões dentro do reset-password-form */
+.buttons-container {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Botão enviar link de recuperação - mais fino */
+#reset-password-form button[type="submit"] {
+  background-color: #357abd;
+  color: white;
+  border: none;
+  padding: 0.4rem 1rem; /* padding vertical menor para ser mais fino */
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#reset-password-form button[type="submit"]:hover {
+  background-color: #285a8f;
+}
+
+/* Botão cancelar do reset-password-form */
+#reset-password-form button[type="button"] {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#reset-password-form button[type="button"]:hover {
+  background-color: #c0392b;
+}
+
+/* Botões do tipo link */
+.link-button {
+  margin-top: 1rem;
+  background: none;
+  border: none;
+  color: #357abd;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.link-button:hover {
+  color: #285a8f;
+}
+
+#error-message {
+  margin-top: 1rem;
+  color: #e74c3c;
+  font-size: 0.9rem;
+  min-height: 1.2rem;
+  word-wrap: break-word;
+}
+
+/* Mensagem de sucesso em verde */
+#error-message.sucesso {
+  color: #27ae60;
+}
+
+/* Responsividade simples */
+@media (max-width: 360px) {
+  .login-container {
+    width: 90%;
+    padding: 2rem 1.5rem;
+  }
+
+  input,
+  button[type="submit"],
+  #reset-password-form button {
+    font-size: 0.9rem;
+  }
+}

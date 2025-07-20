@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  color: #333;
+}
+
+.header {
+  background: #2c7be5;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.nav a:hover {
+  opacity: 0.8;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+.dashboard-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+input,
+select,
+button {
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+button {
+  background: #2c7be5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background: #1a5fd0;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+#graficoGastos {
+  max-width: 80%;
+  margin: 0 auto;
+  display: block;
+}
+
+#lista-gastos {
+  list-style: none;
+  padding: 0;
+}
+
+#lista-gastos li {
+  background: #f9fafb;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#relatorio-final {
+  background: #eef6ff;
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #bcdffb;
+  margin-top: 1rem;
+  white-space: pre-wrap;
+}
+
+.total-gasto-container {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  margin: 1rem 0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.total-gasto-container h2 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #2c7be5;
+}
+
+#total-gasto {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-top: 0.5rem;
+  color: #e53935;
+}
+
+/* ===== CARROSSEL DE MESES - 1 por vez ===== */
+.carousel-wrapper {
+  position: relative;
+  width: 300px;
+  margin: 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-view {
+  overflow: hidden;
+  width: 300px; /* Tamanho fixo para 1 card */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.4s ease-in-out;
+}
+
+/* Mesmo tamanho da .carousel-view */
+
+.mes-card {
+  min-width: 150px;
+  max-width: 150x;
+  background-color: #fff;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  flex-shrink: 0;
+  margin-right: 1px;
+}
+
+/* Botões de navegação */
+#btn-prev,
+#btn-next {
+  width: 32px;
+  height: 32px;
+  background: #2c7be5;
+  border: none;
+  color: white;
+  font-size: 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+#btn-prev {
+  margin-right: 10px;
+}
+
+#btn-next {
+  margin-left: 10px;
+}
+
+#btn-prev:disabled,
+#btn-next:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}

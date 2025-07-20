@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conta+ - Relatórios</title>
+    <link rel="stylesheet" href="style-relatorios.css" />
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Conta+</h1>
+      <nav class="nav">
+        <a href="dashboard.html">Início</a>
+        <a href="cartoes.html">Cartões</a>
+        <a href="relatorios.html" class="active">Relatórios</a>
+        <a href="configuracoes.html">Configurações</a>
+        <a href="index.html">Sair</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2>Histórico de Relatórios Mensais</h2>
+      <ul class="lista-relatorios"></ul>
+
+      <section id="visualizador-relatorio" class="hidden">
+        <h3>Visualização do Relatório</h3>
+        <pre id="conteudo-relatorio"></pre>
+        <button id="fechar-visualizador">Fechar</button>
+      </section>
+    </main>
+
+    <script src="relatorios.js"></script>
+  </body>
+</html>

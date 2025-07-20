@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conta+ - Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Conta+</h1>
+      <nav class="nav">
+        <a href="dashboard.html" class="active">Início</a>
+        <a href="cartoes.html">Cartões</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="configuracoes.html">Configurações</a>
+        <a href="index.html">Sair</a>
+      </nav>
+    </header>
+
+    <main class="dashboard-container">
+      <section class="add-expense">
+        <h2>Adicionar Gasto</h2>
+        <input type="text" id="descricao" placeholder="Descrição do gasto" />
+        <input type="number" id="valor" placeholder="Valor (R$)" />
+        <select id="categoria"></select>
+        <button onclick="adicionarGasto()">Adicionar</button>
+      </section>
+
+      <section id="proximos-meses">
+        <h2>Próximos Meses (Cartões)</h2>
+        <div class="carousel-wrapper">
+          <button id="btn-prev">&#10094;</button>
+          <div class="carousel-view">
+            <div id="meses-container" class="carousel-track"></div>
+          </div>
+          <button id="btn-next">&#10095;</button>
+        </div>
+      </section>
+
+      <div class="total-gasto-container">
+        <h2>Total Gasto no Mês:</h2>
+        <p id="total-gasto">R$ 0,00</p>
+      </div>
+
+      <section class="gastos-lista">
+        <h2>Gastos do Mês</h2>
+        <ul id="lista-gastos"></ul>
+      </section>
+
+      <section class="grafico-section">
+        <h2>Gráfico de Gastos</h2>
+        <canvas id="graficoGastos"></canvas>
+      </section>
+
+      <section class="relatorio">
+        <button onclick="gerarRelatorio()">Gerar Relatório do Mês</button>
+        <div id="relatorio-final"></div>
+      </section>
+    </main>
+
+    <script src="dashboard.js"></script>
+  </body>
+</html>

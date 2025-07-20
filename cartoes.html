@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FinZap - Gerenciar Cartões e Parcelas</title>
+    <link rel="stylesheet" href="cartoes.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Conta+</h1>
+      <nav class="nav">
+        <a href="dashboard.html" class="active">Início</a>
+        <a href="cartoes.html">Cartões</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="configuracoes.html">Configurações</a>
+        <a href="index.html">Sair</a>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Adicionar novo cartão -->
+      <section class="card novo-cartao">
+        <h2>Adicionar Novo Cartão</h2>
+        <input
+          id="nome-cartao"
+          type="text"
+          placeholder="Nome do Cartão (Ex: C6 Bank)"
+        />
+        <button id="adicionar-cartao">Adicionar Cartão</button>
+      </section>
+
+      <!-- Adicionar compra parcelada -->
+      <section class="card nova-compra">
+        <h2>Adicionar Compra Parcelada</h2>
+        <select id="cartao-selecionado">
+          <option value="">Selecione o Cartão</option>
+        </select>
+        <input
+          id="descricao"
+          type="text"
+          placeholder="Descrição (Ex: Notebook)"
+        />
+        <input
+          id="valor"
+          type="number"
+          placeholder="Valor Total (R$)"
+          min="0"
+          step="0.00"
+        />
+        <input
+          id="parcelas"
+          type="number"
+          placeholder="Parcelado em quantas vezes?"
+          min="1"
+        />
+        <input
+          id="pagas"
+          type="number"
+          placeholder="Quantas já foram pagas?"
+          min="0"
+          value="0"
+        />
+        <button id="adicionar-parcela">Salvar Compra Parcelada</button>
+      </section>
+
+      <!-- Listagem dos cartões -->
+      <section class="card lista-cartoes">
+        <h2>Cartões Cadastrados</h2>
+        <div id="lista-cartoes-container"></div>
+      </section>
+    </main>
+
+    <!-- Modal para editar parcela -->
+    <div id="modal-editar" class="modal-overlay hidden">
+      <div class="modal">
+        <h3>Editar Compra Parcelada</h3>
+        <p><strong>Cartão:</strong> <span id="modal-cartao-nome"></span></p>
+
+        <label for="modal-descricao">Descrição</label>
+        <input id="modal-descricao" type="text" />
+
+        <label for="modal-valor">Valor Total (R$)</label>
+        <input id="modal-valor" type="number" step="0.01" min="0" />
+
+        <label for="modal-total-parcelas">Total de Parcelas</label>
+        <input id="modal-total-parcelas" type="number" min="1" />
+
+        <label for="modal-pagas">Parcelas Pagas</label>
+        <input id="modal-pagas" type="number" min="0" />
+
+        <h4>Parcelas</h4>
+        <div class="table-responsive">
+          <table id="modal-tabela-parcelas">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Mês/Ano</th>
+                <th>Valor (R$)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+
+        <div class="modal-buttons">
+          <button id="salvar-edicao">Salvar Alterações</button>
+          <button id="fechar-modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="cartoes.js"></script>
+  </body>
+</html>

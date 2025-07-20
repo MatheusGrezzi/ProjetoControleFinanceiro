@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conta+ - Configurações</title>
+    <link rel="stylesheet" href="style-configuracoes.css" />
+  </head>
+  <body>
+    <header class="header">
+      <h1>Conta+</h1>
+      <nav class="nav">
+        <a href="dashboard.html" class="active">Início</a>
+        <a href="cartoes.html">Cartões</a>
+        <a href="relatorios.html">Relatórios</a>
+        <a href="configuracoes.html">Configurações</a>
+        <a href="index.html">Sair</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <h2>Gerenciar Categorias</h2>
+
+      <section class="add-category">
+        <input type="text" id="nova-categoria" placeholder="Nova categoria" />
+        <button onclick="adicionarCategoria()">Adicionar Categoria</button>
+      </section>
+
+      <section class="lista-categorias">
+        <h3>Categorias Atuais</h3>
+        <ul id="lista-categorias"></ul>
+      </section>
+
+      <section class="dados-usuario">
+        <h2>Informações Cadastrais</h2>
+        <form id="formUsuario">
+          <label>Nome Completo:</label>
+          <input type="text" id="nome" disabled /><br />
+
+          <label>E-mail:</label>
+          <input type="email" id="email" disabled /><br />
+
+          <label>Telefone:</label>
+          <input type="tel" id="telefone" disabled /><br />
+
+          <button type="button" id="editarBtn">Editar Dados</button>
+          <button type="button" id="salvarBtn" style="display: none">
+            Salvar
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script src="configuracoes.js"></script>
+
+    <script>
+      const nome = document.getElementById("nome");
+      const email = document.getElementById("email");
+      const telefone = document.getElementById("telefone");
+      const editarBtn = document.getElementById("editarBtn");
+      const salvarBtn = document.getElementById("salvarBtn");
+
+      // Carregar dados do localStorage
+      window.onload = () => {
+        nome.value = localStorage.getItem("usuario_nome") || "";
+        email.value = localStorage.getItem("usuario_email") || "";
+        telefone.value = localStorage.getItem("usuario_telefone") || "";
+      };
+
+      editarBtn.addEventListener("click", () => {
+        nome.disabled = false;
+        email.disabled = false;
+        telefone.disabled = false;
+        salvarBtn.style.display = "inline-block";
+        editarBtn.style.display = "none";
+      });
+
+      salvarBtn.addEventListener("click", () => {
+        localStorage.setItem("usuario_nome", nome.value);
+        localStorage.setItem("usuario_email", email.value);
+        localStorage.setItem("usuario_telefone", telefone.value);
+
+        nome.disabled = true;
+        email.disabled = true;
+        telefone.disabled = true;
+        salvarBtn.style.display = "none";
+        editarBtn.style.display = "inline-block";
+
+        alert("Dados salvos com sucesso!");
+      });
+    </script>
+  </body>
+</html>

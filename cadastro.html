@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Conta+ - Cadastro</title>
+  <link rel="stylesheet" href="cadastro.css" />
+  <script defer src="cadastro.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <div class="auth-container">
+    <h2>Cadastre-se no Conta+</h2>
+
+    <input type="text" id="name" placeholder="Nome completo" required />
+    <input type="email" id="email" placeholder="E-mail" required />
+    <input type="tel" id="phone" placeholder="Telefone" />
+    <input type="password" id="password" placeholder="Senha" required />
+
+    <button id="signup-btn">Cadastrar</button>
+    <button id="back-to-login" class="secondary">Voltar para login</button>
+  </div>
+
+  <script>
+    document.getElementById("back-to-login").onclick = () => {
+      window.location.href = "index.html";
+    };
+  </script>
+</body>
+</html>

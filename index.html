@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Conta+ - Login</title>
+    <link rel="stylesheet" href="login.css" />
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+  </head>
+  <body>
+    <div class="login-container">
+      <h1>Conta+</h1>
+      <form id="login-form">
+        <input type="email" id="email" placeholder="E-mail" required />
+        <input type="password" id="password" placeholder="Senha" required />
+        <button type="submit">Entrar</button>
+      </form>
+
+      <!-- Botão Esqueci a senha -->
+      <button id="forgot-password" class="link-button">Esqueci a senha</button>
+
+      <!-- Formulário de recuperação de senha (inicialmente escondido) -->
+      <form id="reset-password-form" style="display: none; margin-top: 10px">
+        <input
+          type="email"
+          id="reset-email"
+          placeholder="Digite seu e-mail"
+          required
+        />
+        <div class="buttons-container">
+          <button type="submit">Enviar link de recuperação</button>
+          <button type="button" id="cancel-reset">Cancelar</button>
+        </div>
+      </form>
+
+      <button id="go-to-register" class="link-button">Cadastrar</button>
+      <div id="error-message"></div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>

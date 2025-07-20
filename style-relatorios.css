@@ -1,0 +1,195 @@
+/* Base e corpo */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: #f0f4f8;
+  color: #333;
+}
+
+/* Cabeçalho */
+.header {
+  background: #2c7be5;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  color: white;
+  margin-left: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.3s;
+}
+
+.nav a:hover {
+  opacity: 0.8;
+}
+
+.nav a.active {
+  text-decoration: underline;
+}
+
+/* Container principal */
+.container {
+  max-width: 700px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Título */
+h2 {
+  margin-bottom: 1rem;
+}
+
+/* Lista de relatórios */
+.lista-relatorios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Item com status */
+.item-relatorio {
+  background: #f9fafb;
+  border: 1px solid #dbe5f1;
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 1rem;
+}
+
+.info-relatorio {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.status-positivo {
+  color: #2e7d32;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Botões */
+.botoes-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.botao {
+  background: #2c7be5;
+  color: white;
+  border: none;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: background 0.3s;
+  white-space: nowrap;
+}
+
+.botao:hover {
+  background: #1a5fd0;
+}
+
+/* Visualizador de relatório */
+.visualizador-relatorio {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: #eef6ff;
+  border-radius: 10px;
+  border: 1px solid #bcdffb;
+  white-space: pre-wrap;
+  max-height: 400px;
+  overflow-y: auto;
+  color: #333;
+  font-size: 0.9rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hidden {
+  display: none;
+}
+
+#fechar-visualizador {
+  margin-top: 1rem;
+  background: #c62828;
+  border: none;
+  padding: 0.5rem 1rem;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background 0.3s;
+}
+
+#fechar-visualizador:hover {
+  background: #8b1a1a;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+  .item-relatorio {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .botoes-container {
+    margin-top: 0.75rem;
+    width: 100%;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-conteudo {
+  background: white;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-conteudo pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
