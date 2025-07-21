@@ -44,6 +44,7 @@ const descricaoInput = document.getElementById("descricao");
 const valorInput = document.getElementById("valor");
 const parcelasInput = document.getElementById("parcelas");
 const pagasInput = document.getElementById("pagas");
+const mesLancamentoInput = document.getElementById("mes-lancamento");
 const btnAdicionarParcela = document.getElementById("adicionar-parcela");
 
 const listaCartoesContainer = document.getElementById(
@@ -78,6 +79,7 @@ function limparInputsCompra() {
   valorInput.value = "";
   parcelasInput.value = "";
   pagasInput.value = "0";
+  mesLancamentoInput.value = "";
 }
 
 // Atualiza o select de cartões no formulário de compra
@@ -237,13 +239,14 @@ btnAdicionarCartao.addEventListener("click", () => {
   atualizarUI();
 });
 
-// Adicionar compra parcelada
+// Adicionar compra parcelada (alterado para considerar mês/ano do lançamento)
 btnAdicionarParcela.addEventListener("click", () => {
   const nomeCartao = selectCartao.value;
   const descricao = descricaoInput.value.trim();
   const valor = parseFloat(valorInput.value);
   const totalParcelas = parseInt(parcelasInput.value);
   const pagas = parseInt(pagasInput.value);
+  const mesLancamentoStr = mesLancamentoInput.value; // formato YYYY-MM
 
   if (
     !nomeCartao ||
@@ -259,23 +262,47 @@ btnAdicionarParcela.addEventListener("click", () => {
     return alert("Preencha todos os campos corretamente.");
   }
 
+  // Validação do mês de lançamento
+  if (!mesLancamentoStr) {
+    return alert("Informe o mês do lançamento da compra.");
+  }
+
+  // Extrair ano e mês do campo mês-ano (mesLancamentoStr)
+  const [anoLanc, mesLanc] = mesLancamentoStr.split("-").map(Number);
+
+  if (
+    isNaN(anoLanc) ||
+    isNaN(mesLanc) ||
+    mesLanc < 1 ||
+    mesLanc > 12 ||
+    anoLanc < 1900
+  ) {
+    return alert("Mês do lançamento inválido.");
+  }
+
   const cartoes = getCartoes();
   const cartao = cartoes.find((c) => c.nome === nomeCartao);
   if (!cartao) return alert("Cartão selecionado não encontrado.");
 
   const parcelaMensal = +(valor / totalParcelas).toFixed(2);
 
-  const hoje = new Date();
-  const anoAtual = hoje.getFullYear();
-  const mesAtual = hoje.getMonth();
-
-  // Cria as parcelas a partir da parcela atual (pagas)
+  // Cria as parcelas a partir do mês/ano de lançamento informado, considerando parcelas já pagas
   const parcelas = [];
   for (let i = pagas; i < totalParcelas; i++) {
-    const data = new Date(anoAtual, mesAtual + i - pagas);
-    const mes = data.getMonth() + 1;
-    const ano = data.getFullYear();
-    parcelas.push({ descricao, valor: parcelaMensal, mes, ano });
+    // Calcula mês e ano da parcela i (começando do mesLanc e anoLanc)
+    let mesCalc = mesLanc + (i - pagas);
+    let anoCalc = anoLanc;
+    // Ajusta se ultrapassar dezembro
+    while (mesCalc > 12) {
+      mesCalc -= 12;
+      anoCalc++;
+    }
+    parcelas.push({
+      descricao,
+      valor: parcelaMensal,
+      mes: mesCalc,
+      ano: anoCalc,
+    });
   }
 
   cartao.parcelas.push({
@@ -284,6 +311,7 @@ btnAdicionarParcela.addEventListener("click", () => {
     parcelas,
     totalParcelas,
     pagas,
+    mesLancamento: { ano: anoLanc, mes: mesLanc }, // armazenar info do lançamento
   });
 
   saveCartoes(cartoes);
